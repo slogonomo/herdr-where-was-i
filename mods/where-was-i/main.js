@@ -16,6 +16,7 @@ const RESUME_CMDS = {
   antigravity: "agy",
   agy: "agy",
   opencode: "opencode --continue",
+  hermes: "hermes --continue",
   gemini: "gemini",
   pi: "pi",
   cursor: "cursor-agent",
@@ -23,20 +24,24 @@ const RESUME_CMDS = {
 };
 
 const AGENT_ICONS = {
-  claude: { icon: "icons/claude.svg", tint: true },
-  "claude-code": { icon: "icons/claude.svg", tint: true },
-  codex: { icon: "icons/codex.svg", tint: true },
+  claude: { icon: "icons/claude.svg", tint: false },
+  "claude-code": { icon: "icons/claude.svg", tint: false },
+  codex: { icon: "icons/codex.svg", tint: false },
   antigravity: { icon: "icons/antigravity.svg", tint: false },
   agy: { icon: "icons/antigravity.svg", tint: false },
+  amp: { icon: "icons/amp.svg", tint: false },
+  crush: { icon: "icons/crush.svg", tint: false },
+  kimi: { icon: "icons/kimi.svg", tint: false },
+  kiro: { icon: "icons/kiro.svg", tint: false },
+  pig: { icon: "icons/pig.svg", tint: false },
   opencode: { icon: "icons/opencode.svg", tint: true },
   gemini: { icon: "icons/gemini.svg", tint: true },
   pi: { icon: "icons/pi.svg", tint: true },
   cursor: { icon: "icons/cursor.svg", tint: true },
   grok: { icon: "icons/grok.svg", tint: true },
-  hermes: { icon: "icons/hermes.svg", tint: false },
-  kimi: { icon: "icons/kimi.svg", tint: true },
-  kiro: { icon: "icons/kiro.svg", tint: true },
+  hermes: { icon: "icons/hermes.svg", tint: true },
   copilot: { icon: "icons/copilot.svg", tint: true },
+  qoder: { icon: "icons/qoder.svg", tint: true },
 };
 
 const SHELL_NAMES = new Set(["bash", "zsh", "fish", "sh", "dash", "ksh", "nu", "xonsh", "tcsh", "csh"]);
@@ -118,7 +123,7 @@ export default class Pane extends View {
 
   syncAgentMemory(p, term, atShell) {
     if (!p?.terminal || !term || atShell) return;
-    if (p.program?.agent && p.status) {
+    if (p.program?.agent) {
       const agentName = p.program.name || p.app || "Agent";
       const agentKey = p.program.key || p.app || "";
       const agentIcon = p.program.icon || "";
