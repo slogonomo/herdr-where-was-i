@@ -1,0 +1,8 @@
+{
+  "place": "none",
+  "title": "Where was I?",
+  "cloned_from": {
+    "name": "pane",
+    "version": "0.1.13"
+  }
+}
